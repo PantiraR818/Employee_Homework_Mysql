@@ -10,11 +10,26 @@
     <div layout:fragment="content">
         <div class="row mt-3">
             <div class="col-md-12" style="text-align: right;">
-                <a href="#" class="btn btn-primary">EmployeeList</a>
+                <a href="/employee/new" class="btn btn-success">Add new Employee</a>
             </div>
         </div>
         <div class="row mt-3">
             <div class="h1">All Employee</div>
+            <div>
+                 <!-- ปุ่ม ค้นหา -->
+                <form th:action="@{/employee/name}" method="post">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <input class="form-control" type="text" name="name" placeholder="Search Name" th:value="${name}" >
+                        </div>
+                        <div class="col-md-1">
+                            <div class="d-gid gap-2">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="col-md-12 mt-2">
                 <table class="table">
                     <thead>
@@ -24,6 +39,7 @@
                             <th>SALARY</th>
                             <th>DEPARTMENT</th>
                             <th>PROJECT</th>
+                            <th>MANAGE</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +49,17 @@
                             <td th:text = "${e.salary}"></td>
                             <td th:text = "${e.department.name}"></td>
                             <td th:text = "${e.project.name}"></td>
+                            <td>
+                                <a th:href="@{'/employee/edit/'+ ${e.id}}" class="btn btn-warning btn-sm">
+                                    Edit
+                                </a>
+                                <!-- /product/delete/{id} -->
+                                <a th:href="@{'/employee/delete/'+ ${e.id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this product?')" >
+                                    Delete
+                                </a>
+                            </td>
                         </tr>
+                        
                     </tbody>
                 </table>
             </div>

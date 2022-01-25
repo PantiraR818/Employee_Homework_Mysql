@@ -35,6 +35,7 @@ public class Employee {
     @JoinColumn(name = "departmentId", nullable = false)
     private Department department;
     
+    
     @ManyToOne
     @JoinColumn(name = "projectId", nullable = false)
     private Project project;

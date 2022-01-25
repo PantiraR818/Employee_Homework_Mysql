@@ -28,4 +28,13 @@ public class EmployeeService {
     public List<Employee> findBySalary(Double salary){
         return employeeRepository.findBySalaryGreaterThanEqual(salary);
     }
+
+    // homework 2
+    public Employee save(Employee employee){
+        return employeeRepository.save(employee);
+    }
+
+    public void delete(Employee employee){
+        employeeRepository.delete(employee);
+    }
 }
